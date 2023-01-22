@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ДемкаСПА</title>
+    <title>Макет</title>
+    <title>Макет</title>
+    <link rel="stylesheet" type="text/css" href="960_12_col.css" />
+    <style type="text/css">
+    @font-face {
+    font-family: 'QuicksandBook';
+    src: url('fonts/Quicksand_Book-webfont.eot');
+    src: url('fonts/Quicksand_Book-webfont.eot?#iefix') format('embedded-opentype'),
+    url('fonts/Quicksand_Book-webfont.woff') format('woff'),
+    url('fonts/Quicksand_Book-webfont.ttf') format('truetype'),
+    url('fonts/Quicksand_Book-webfont.svg#QuicksandBook') format('svg');
+    font-weight: normal;
+    font-style: normal;}
+    </style>
+ </head>
+ <body>
+    
+ <div class="header">
+ <div class="container_12">
+   <div class="grid_5"> 
+      <img class="logo" src="images2.html/logo.jpg" alt="" width="380" height="100"  />
+   </div>
+
+ <div class="nav grid_7">
+ <a href="index.html">Главная</a> / 
+ <a href="pages/about.html">Услуги</a> / 
+ <a href="pages/contacts.html">Контакты и о Нас</a> /
+ </div>
+ </div>
+ </div>
+ <div class="wrapper">
+ <div class="main-story container_12">
+ <div class="grid_6 push_6">
+ <h1><a href="pages/contacts.html">Добро пожаловать в Демка СПА</a></h1>
+ </div>
+ <div class="intro grid_3 push_9">
+ <p class="date">01.01.2023</p>
+ <p> Добро пожаловать в Демка СПА. Забудьте об утомительных перелетах, о языковых барьерах и акклиматизации, позвольте себе отпуск, не покидая черты нашего города! Балийский SPA кабинет. Балийский массаж и спа процедуры в исполнении дипломированных специалистов с острова Бали. SPA - день. Прекрасная возможность посвятить уходу за собой целый день или провести незабываемое время с любимым человеком. Классический массаж </p>
+ 
+ <p>
+   <form action="process.php">
+       <input name="login" type="text" placeholder="Логин">
+       <input name="password" type="password" placeholder="Пароль">
+       <input name="submit" type="submit" value="Войти">
+   </form>
+</p>
+
+
+<p>
+   <form action="promotion.php">
+     <img src="" alt="Акция" width="220" height="125" /> 
+     <p> <a href="promotion.php">Акция</a></p>
+   </form>
+</p>
+<p class="timer" alt="Акция" width="220" height="125" >
+   <div class="timer">
+      <div class="timer__items">
+        <div class="timer__item timer__days">00</div>
+        <div class="timer__item timer__hours">00</div>
+        <div class="timer__item timer__minutes">00</div>
+        <div class="timer__item timer__seconds">00</div>
+      </div>
+</p>
+<style>
+   *,
+   *::before,
+   *::after {
+     box-sizing: border-box;
+   }
+
+   @media (prefers-reduced-motion: no-preference) {
+     :root {
+       scroll-behavior: smooth;
+     }
+   }
+
+   html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    background: linear-gradient(165.95deg,#070772ef 18.78%, #4581b9 45.93%);
+    font-family: 'Roboto', sans-serif;
+    font-size: 90%;
+    margin: 0px;
+    text-align: center;}
+
+   body {
+     margin: 0;
+     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+     font-size: 1rem;
+     font-weight: 400;
+     line-height: 1.5;
+     color: #212529;
+     background-color: #fff;
+     -webkit-text-size-adjust: 100%;
+     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+     display: flex;
+     justify-content: center;
+   }
+
+   .timer__items {
+     display: flex;
+     font-size: 48px;
+   }
+
+   .timer__item {
+     position: relative;
+     min-width: 60px;
+     margin-left: 10px;
+     margin-right: 10px;
+     padding-bottom: 15px;
+     text-align: center;
+   }
+
+   .timer__item::before {
+     content: attr(data-title);
+     display: block;
+     position: absolute;
+     left: 40%;
+     bottom: 0;
+     transform: translateX(-50%);
+     font-size: 14px;
+   }
+
+   .timer__item:not(:last-child)::after {
+     content: ':';
+     position: absolute;
+     right: -15px;
+   }
+ </style>
+ <script>
+   document.addEventListener('DOMContentLoaded', function () {
+     // конечная дата
+     const deadline = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 01);
+     // id таймера
+     let timerId = null;
+     // склонение числительных
+     function declensionNum(num, words) {
+       return words[(num % 100 > 4 && num % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(num % 10 < 5) ? num % 10 : 5]];
+     }
+     // вычисляем разницу дат и устанавливаем оставшееся времени в качестве содержимого элементов
+     function countdownTimer() {
+       const diff = deadline - new Date();
+       if (diff <= 0) {
+         clearInterval(timerId);
+       }
+       const days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
+       const hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
+       const minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
+       const seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
+       $days.textContent = days < 10 ? '0' + days : days;
+       $hours.textContent = hours < 10 ? '0' + hours : hours;
+       $minutes.textContent = minutes < 10 ? '0' + minutes : minutes;
+       $seconds.textContent = seconds < 10 ? '0' + seconds : seconds;
+       $days.dataset.title = declensionNum(days, ['день', 'дня', 'дней']);
+       $hours.dataset.title = declensionNum(hours, ['час', 'часа', 'часов']);
+       $minutes.dataset.title = declensionNum(minutes, ['минута', 'минуты', 'минут']);
+       $seconds.dataset.title = declensionNum(seconds, ['секунда', 'секунды', 'секунд']);
+     }
+     // получаем элементы, содержащие компоненты даты
+     const $days = document.querySelector('.timer__days');
+     const $hours = document.querySelector('.timer__hours');
+     const $minutes = document.querySelector('.timer__minutes');
+     const $seconds = document.querySelector('.timer__seconds');
+     // вызываем функцию countdownTimer
+     countdownTimer();
+     // вызываем функцию countdownTimer каждую секунду
+     timerId = setInterval(countdownTimer, 1000);
+   });
+ </script>
+
+
+
+ </div>
+ </div>
+ </div><!-- .main-story -->
+ <div class="more-articles container_12">
+    <h2 class="grid_12"><a href="">Наши услуги:</a></h2>
+ <div class="grid_3">
+ <img src="images2.html/arocha1.jpg" alt="Программа «Коррекция фигуры с AROSHA»" width="300" height="250" />
+ <p> <a href="pages/about.html">Программа «Коррекция фигуры с AROSHA»</a></p>
+ </div>
+ <div class="grid_3">
+ <img src="images2.html/arocha2.jpg" alt="Увлажняющая и успокаивающая процедура POLI SOFT (ПИЛИНГ) + HYDRA INTENSITY от Natinuel" width="350" height="250" />
+ <p><a href="pages/about.html">Увлажняющая и успокаивающая процедура POLI SOFT (ПИЛИНГ) + HYDRA INTENSITY от Natinuel</a></p>
+</div>
+ <div class="grid_3">
+ <img src="images2.html/arocha3.jpg" alt="Комплексная процедура для областей вокруг глаз и лба от Natinuel" width="350" height="250" />
+ <p><a href="pages/about.html">Комплексная процедура для областей вокруг глаз и лба от Natinuel</a></p>
+</div>
+ <div class="grid_3">
+ <img src="images2.html/lebel1.jpg" alt="«Абсолютное счастье» для волос от Lebel" width="300" height="300" />
+ <p><a href="pages/about.html">«Абсолютное счастье» для волос от Lebel</a></p>
+</div>
+ </div><!-- .more-articles -->
+ </div><!-- .wrapper -->
+ <div class="footer clearfix">
+ <div class="container_12">
+ <p class="grid_12"><a href="">Юридическая информация</a> | <a href="">Положения
+ о конфиденциальности</a> | <a href="">Собственность &copy; ДемкаСПА 2023</a></p>
+ </div>
+ </div>
+ </body>
+</html>
